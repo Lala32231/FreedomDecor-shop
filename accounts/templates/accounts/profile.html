@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+      body { justify-content: flex-start; }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <div class="topbar">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar">{{ user.username|slice:":2"|upper }}</div>
+          <div>
+            <p style="margin: 0; font-size: 16px; font-weight: 500;">{{ user.username }}</p>
+            <p style="margin: 0; font-size: 13px; color: var(--muted);">Особистий кабінет</p>
+          </div>
+        </div>
+        <a href="{% url 'home' %}" class="logout">← Головна</a>
+      </div>
+      
+      {% if saved %}
+        <div style="display: grid; gap: 12px;">
+          <div class="profile-row">
+            <span style="color: var(--muted); font-size: 14px;">Стать</span>
+            <span style="font-size: 14px;">{{ form.instance.get_gender_display }}</span>
+          </div>
+          <div class="profile-row">
+            <span style="color: var(--muted); font-size: 14px;">Країна</span>
+            <span style="font-size: 14px;">{{ form.instance.country }}</span>
+          </div>
+          <div class="profile-row">
+            <span style="color: var(--muted); font-size: 14px;">Електронна пошта</span>
+            <span style="font-size: 14px;">{{ form.instance.email }}</span>
+          </div>
+        </div>
+        <button onclick="window.location.href='?edit=1'" class="button" style="margin-top: 20px;">Редагувати</button>
+
+      {% else %}
+        <form method="post" class="form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="button">Зберегти</button>
+        </form>
+      {% endif %}
+    </section>
+  </body>
+</html>

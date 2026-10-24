@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <div class="auth-page" style="background-image:url('{% static 'images/backgrond.jpg' %}')">
+      <div class="auth-overlay"></div>
+
+      <div class="card">
+        <a href="{% url 'home' %}" class="logo">
+          <span class="year">1950</span>
+          <span class="name">SweetS</span>
+          <span class="city">PARIS</span>
+        </a>
+
+        <h2 class="card-title">Реєстрація</h2>
+
+        <form method="post">
+          {% csrf_token %}
+          
+          <div style="margin-bottom:16px;">
+            <input type="text" name="username" placeholder="Імʼя користувача" class="input-field" required>
+          </div>
+          <div style="margin-bottom:16px;">
+            <input type="password" name="password1" placeholder="Пароль" class="input-field" required>
+          </div>
+          <div style="margin-bottom:24px;">
+            <input type="password" name="password2" placeholder="Підтвердження пароля" class="input-field" required>
+          </div>
+
+          <button type="submit" class="pay-btn close-btn">Зареєструватися</button>
+        </form>
+
+        <p style="margin-top:16px; font-size:14px; color:var(--muted);">
+          Вже є акаунт? <a href="{% url 'login' %}" style="color:#a9763f;">Увійти</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

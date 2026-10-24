@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreedomDecor — ловці снів, ловці сонця та прикраси</title>
+
+  <!-- Шрифти -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+
+      <!-- Ловець снів -->
+      <symbol id="dream" viewBox="0 0 300 480">
+        <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="150" cy="150" r="104" stroke-width="7"/>
+          <polygon points="250,150 220.7,220.7 150,250 79.3,220.7 50,150 79.3,79.3 150,50 220.7,79.3" opacity=".55"/>
+          <polygon points="212,150 193.8,193.8 150,212 106.2,193.8 88,150 106.2,106.2 150,88 193.8,106.2"/>
+          <polygon points="180,150 171.2,171.2 150,180 128.8,171.2 120,150 128.8,128.8 150,120 171.2,128.8"/>
+          <path d="M250 150L212 150M220.7 220.7L193.8 193.8M150 250L150 212M79.3 220.7L106.2 193.8
+                   M50 150L88 150M79.3 79.3L106.2 106.2M150 50L150 88M220.7 79.3L193.8 106.2" opacity=".7"/>
+          <path d="M150 254V330M120 246L96 350M180 246L204 340" opacity=".8"/>
+        </g>
+        <circle cx="150" cy="150" r="7" fill="currentColor"/>
+        <g fill="currentColor">
+          <circle cx="150" cy="300" r="5"/>
+          <circle cx="102" cy="320" r="4"/>
+          <circle cx="198" cy="312" r="4"/>
+          <path d="M150 330c-20 20-24 60-8 100 4 10 12 10 16 0 16-40 12-80-8-100z" opacity=".85"/>
+          <path d="M96 350c-20 18-26 52-14 88 3 9 11 9 14 0 12-30 12-62 0-88z" opacity=".65"/>
+          <path d="M204 340c20 18 26 52 14 88-3 9-11 9-14 0-12-30-12-62 0-88z" opacity=".65"/>
+        </g>
+      </symbol>
+
+      <!-- Ловець сонця -->
+      <symbol id="sun" viewBox="0 0 300 480">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <circle cx="150" cy="150" r="70" stroke-width="7"/>
+          <path stroke-width="5" d="M150 52V30M150 270v22M52 150H30M270 150h22M81 81L65 65M219 219l16 16M219 81l16-16M81 219L65 235"/>
+          <path stroke-width="2.4" d="M150 292V350M120 270L110 330M180 270L190 330"/>
+        </g>
+        <circle cx="150" cy="150" r="46" fill="currentColor" opacity=".28"/>
+        <circle cx="150" cy="150" r="22" fill="currentColor" opacity=".55"/>
+        <g fill="currentColor">
+          <circle cx="150" cy="320" r="11" opacity=".9"/>
+          <circle cx="150" cy="352" r="8" opacity=".7"/>
+          <circle cx="110" cy="335" r="8" opacity=".8"/>
+          <circle cx="190" cy="335" r="8" opacity=".8"/>
+          <circle cx="150" cy="380" r="13" opacity=".9"/>
+          <circle cx="150" cy="412" r="7" opacity=".6"/>
+        </g>
+      </symbol>
+
+      <!-- Дерево життя -->
+      <symbol id="tree" viewBox="0 0 300 480">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <circle cx="150" cy="150" r="104" stroke-width="7"/>
+          <path stroke-width="5" d="M150 250V80M150 205C120 195 100 175 92 140M150 205C180 195 200 175 208 140
+                                    M150 170C135 150 128 120 130 90M150 170C165 150 172 120 170 90
+                                    M150 250C140 228 120 218 98 218M150 250C160 228 180 218 202 218"/>
+          <path stroke-width="2.4" d="M150 254V330M110 246L96 350M190 246L204 340"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="92" cy="138" r="9"/>
+          <circle cx="208" cy="138" r="9"/>
+          <circle cx="130" cy="88" r="9"/>
+          <circle cx="170" cy="88" r="9"/>
+          <circle cx="150" cy="76" r="9"/>
+          <circle cx="150" cy="310" r="5"/>
+          <path d="M150 330c-20 20-24 60-8 100 4 10 12 10 16 0 16-40 12-80-8-100z" opacity=".85"/>
+          <path d="M96 350c-20 18-26 52-14 88 3 9 11 9 14 0 12-30 12-62 0-88z" opacity=".65"/>
+          <path d="M204 340c20 18 26 52 14 88-3 9-11 9-14 0-12-30-12-62 0-88z" opacity=".65"/>
+        </g>
+      </symbol>
+
+      <!-- Прикраси (кулон і сережки) -->
+      <symbol id="jewel" viewBox="0 0 300 480">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M60 40Q150 330 240 40" stroke-width="3"/>
+          <circle cx="150" cy="195" r="30" stroke-width="6"/>
+          <path d="M90 300v28M210 300v28" stroke-width="3"/>
+          <circle cx="90" cy="346" r="18" stroke-width="5"/>
+          <circle cx="210" cy="346" r="18" stroke-width="5"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="150" cy="195" r="9"/>
+          <circle cx="90" cy="346" r="6"/>
+          <circle cx="210" cy="346" r="6"/>
+          <path d="M90 380c-8 14-10 36-4 56 2 6 6 6 8 0 6-20 4-42-4-56z" opacity=".7"/>
+          <path d="M210 380c-8 14-10 36-4 56 2 6 6 6 8 0 6-20 4-42-4-56z" opacity=".7"/>
+        </g>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- ===== Шапка (меню) ===== -->
+  <header class="top">
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#/">FreedomDecor</a>
+
+        <div class="links">
+          <a href="#/catalog">Каталог</a>
+          <a href="#/c/dream">Ловці снів</a>
+          <a href="#/c/sun">Ловці сонця</a>
+          <a href="#/c/jewelry">Прикраси</a>
+          <a href="#/about">Про нас</a>
+          <a class="cart" id="cart" href="#/catalog">Кошик (0)</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Сюди JS вставляє великий блок (hero) тільки на головній -->
+    <div id="hero"></div>
+  </header>
+
+  <!-- ===== Вміст сторінки (його підставляє script.js) ===== -->
+  <main id="app"></main>
+
+  <!-- ===== Підвал ===== -->
+  <footer id="contacts">
+    <h2>Обрали? Напишіть нам в Instagram</h2>
+    <p>Оплату та доставку обговорюємо в особистих повідомленнях. Відповідаємо протягом дня.</p>
+    <a class="btn sun" href="#/contacts">Написати в директ</a>
+    <small>FreedomDecor © 2026. Приклад структури сайту</small>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

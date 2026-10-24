@@ -1,0 +1,627 @@
+/* =========================================================
+   FreedomDecor — стилі
+   1. Змінні (кольори)   2. Базові стилі   3. Шапка і hero
+   4. Кнопки             5. Секції         6. Категорії
+   7. Товари             8. Сторінки категорій
+   9. Про нас            10. Підвал        11. Адаптив
+   ========================================================= */
+
+
+/* ---------- 1. Змінні (кольори, радіус) ---------- */
+:root {
+  --navy: #133a72;        /* темно-синій */
+  --blue: #2f7bc8;        /* яскравіший синій */
+  --sun: #f0b43c;         /* жовтий акцент */
+  --sunlight: #fbe6a8;    /* світло-жовтий */
+
+  --paper: #edf3fb;       /* фон сторінки */
+  --card: #ffffff;        /* фон карток */
+  --ink: #14284d;         /* основний текст */
+  --muted: #546688;       /* другорядний текст */
+  --line: #d3deee;        /* рамки */
+
+  --radius: 22px;
+
+  /* Шапка, підвал, акценти (на сторінках категорій їх міняють теми) */
+  --head-1: var(--navy);
+  --head-2: var(--blue);
+  --foot: var(--navy);
+  --on-head: #eef5ff;
+  --accent: var(--blue);
+  --btn-bg: var(--sun);
+  --btn-fg: #2a2200;
+  --on-foot: #eef5ff;
+  --on-accent: #fff;
+}
+
+/* Темна тема (підхоплюється з налаштувань телефону / ПК) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1a2a4d;
+    --card: #243a68;
+    --ink: #e8eefb;
+    --muted: #a9b9da;
+    --line: #35497c;
+  }
+}
+
+
+/* ---------- Кольорові теми сторінок ----------
+   JS ставить клас теми на <html>: theme-dream, theme-sun або theme-jewelry.
+   Змінюються шапка, фон, підвал, кнопки й акценти.
+   Головна й каталог лишаються синіми (значення з :root). */
+
+/* Ловці снів: #1E293B  #475368  #9D886B  #CFAF83 */
+html.theme-dream {
+  --head-1: #1E293B;
+  --head-2: #475368;
+  --on-head: #CFAF83;
+  --foot: #1E293B;
+  --on-foot: #CFAF83;
+  --accent: #9D886B;
+  --on-accent: #1E293B;
+  --btn-bg: #CFAF83;
+  --btn-fg: #1E293B;
+
+  --paper: #F3ECE0;      /* світла версія #CFAF83 */
+  --card: #ffffff;
+  --ink: #1E293B;
+  --muted: #475368;
+  --line: #E0D3BC;
+}
+
+/* Ловці сонця: #FCC963  #FCF2C5  #E28E4B  #752A0B  #4C2611 */
+html.theme-sun {
+  --head-1: #FCC963;
+  --head-2: #E28E4B;
+  --on-head: #4C2611;
+  --foot: #752A0B;
+  --on-foot: #FCF2C5;
+  --accent: #E28E4B;
+  --on-accent: #4C2611;
+  --btn-bg: #FCC963;
+  --btn-fg: #4C2611;
+
+  --paper: #FCF2C5;
+  --card: #FFFAEA;
+  --ink: #4C2611;
+  --muted: #7D5A43;
+  --line: #EBD9A0;
+}
+
+/* Прикраси */
+html.theme-jewelry {
+  --head-1: #efe9df;
+  --head-2: #cdc2b0;
+  --on-head: #3b362e;
+  --foot: #bfb29d;
+  --on-foot: #3b362e;
+  --accent: #9a8456;
+  --btn-bg: #3b362e;
+  --btn-fg: #f4f0ea;
+
+  --paper: #f5f1ea;
+  --card: #ffffff;
+  --ink: #3b362e;
+  --muted: #7a7060;
+  --line: #e1d9cb;
+}
+
+/* Ті самі теми у темному режимі */
+@media (prefers-color-scheme: dark) {
+  html.theme-dream {
+    --paper: #1E293B;
+    --card: #2A3548;
+    --ink: #E9DCC3;
+    --muted: #CFAF83;
+    --line: #475368;
+  }
+  html.theme-sun {
+    --paper: #2A1608;
+    --card: #4C2611;
+    --ink: #FCF2C5;
+    --muted: #E8C98A;
+    --line: #6B3A1C;
+  }
+  html.theme-jewelry {
+    --paper: #26231f;
+    --card: #332f29;
+    --ink: #efe9df;
+    --muted: #bdb2a0;
+    --line: #4a443a;
+  }
+}
+
+
+/* ---------- 2. Базові стилі ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--foot);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: 'Cormorant', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  display: block;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+
+/* ---------- 3. Шапка і hero ---------- */
+.top {
+  position: relative;
+  background: linear-gradient(135deg, var(--head-1), var(--head-2));
+  color: var(--on-head);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 22px;
+  padding: 18px 0;
+}
+
+.brand {
+  font-family: 'Cormorant', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 20px;
+  font-size: 0.93rem;
+}
+
+.links a {
+  padding: 2px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.links a:hover,
+.links a.on {                      /* .on — активний пункт меню */
+  border-color: currentColor;
+}
+
+.links .cart {
+  padding: 6px 15px;
+  border: 1px solid currentColor;
+  border-radius: 99px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* зірочки на фоні */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 72%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 47% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 64% 84%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 90% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 84% 62%, #fff 50%, transparent 51%);
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0 80px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.3rem);
+}
+
+.hero p {
+  max-width: 30em;
+  margin: 18px 0 28px;
+  color: #d3e4fb;
+  font-size: 1.07rem;
+}
+
+.hero-art {
+  max-width: 320px;
+  margin: 0 auto;
+  color: #eaf3ff;
+  filter: drop-shadow(0 0 40px rgba(159, 205, 245, 0.35));
+}
+
+.moon {
+  position: absolute;
+  top: 30px;
+  right: 6%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: inset -13px 0 0 0 var(--sunlight);
+  transform: rotate(-20deg);
+}
+
+.wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  color: var(--paper);
+}
+
+
+/* ---------- 4. Кнопки ---------- */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1.5px solid transparent;
+  border-radius: 99px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn.sun {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.btn.sun:hover {
+  opacity: 0.85;
+}
+
+.btn.ghost {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+.btn.ghost:hover {
+  border-color: #fff;
+}
+
+
+/* ---------- 5. Секції ---------- */
+section {
+  padding: 56px 0;
+}
+
+.t {                                /* заголовок секції */
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+}
+
+.sub {                              /* підзаголовок секції */
+  max-width: 36em;
+  margin: 0 0 28px;
+  color: var(--muted);
+}
+
+/* кнопки-фільтри */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.chip {
+  padding: 8px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  background: var(--card);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.chip:hover {
+  border-color: var(--accent);
+}
+.chip.on {                          /* вибраний фільтр */
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+
+/* ---------- 6. Плитки категорій на головній ---------- */
+.cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 250px;
+  padding: 26px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform 0.25s;
+}
+.cat:hover {
+  transform: translateY(-3px);
+}
+
+.cat h3 {
+  font-size: 2rem;
+}
+.cat p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+}
+
+.cat svg {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 150px;
+  opacity: 0.9;
+}
+
+/* Кольорові теми категорій */
+.dream {                            /* ніч */
+  background: linear-gradient(160deg, #475368, #1E293B);
+  color: #CFAF83;
+}
+.sun-c {                            /* день */
+  background: linear-gradient(160deg, #FCC963, #E28E4B);
+  color: #4C2611;
+}
+.blue {                             /* синій верх каталогу */
+  background: linear-gradient(160deg, var(--blue), var(--navy));
+  color: #eef5ff;
+}
+.jewelry {                          /* нейтральна */
+  background: linear-gradient(160deg, #efe9df, #cdc2b0);
+  color: #3b362e;
+}
+
+/* блок «Дерево життя» на головній */
+.tree {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 28px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.tree svg {
+  width: 110px;
+  color: var(--accent);
+}
+.tree p {
+  margin: 8px 0 14px;
+  color: var(--muted);
+}
+
+
+/* ---------- 7. Картки товарів ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.pic {                              /* зона з малюнком / фото */
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  padding: 18px;
+}
+.pic svg {
+  width: auto;
+  height: 100%;
+}
+
+.pic.dream   { background: linear-gradient(180deg, #475368, #1E293B); color: #CFAF83; }
+.pic.sun     { background: linear-gradient(180deg, #FCF2C5, #FCC963); color: #752A0B; }
+.pic.jewelry { background: linear-gradient(180deg, #f1ece3, #cfc4b2); color: #6b5530; }
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px 18px;
+}
+.body h3 {
+  font-size: 1.3rem;
+}
+.body small {
+  color: var(--muted);
+}
+
+.price {
+  margin: 6px 0 12px;
+  font-weight: 700;
+}
+
+.body .btn {
+  margin-top: auto;
+  padding: 9px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.88rem;
+}
+.body .btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+
+/* ---------- 8. Верх сторінок категорій і каталогу ---------- */
+.band {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0 46px;
+}
+.band .wrap {
+  position: relative;
+}
+.band h1 {
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
+}
+.band p {
+  max-width: 30em;
+  margin: 12px 0 0;
+}
+.band svg {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 190px;
+  opacity: 0.9;
+}
+
+.crumbs {                           /* хлібні крихти */
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+.crumbs a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------- 9. Про нас ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 40px;
+}
+.about .art {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--blue), var(--navy));
+  color: #eaf3ff;
+}
+.about .art svg {
+  width: 190px;
+}
+.about p {
+  margin: 12px 0;
+  color: var(--muted);
+}
+
+
+/* ---------- 10. Підвал ---------- */
+footer {
+  padding: 56px 22px 36px;
+  background: var(--foot);
+  color: var(--on-foot);
+  text-align: center;
+}
+footer h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+}
+footer p {
+  max-width: 30em;
+  margin: 0 auto 24px;
+  opacity: 0.85;
+}
+footer small {
+  display: block;
+  margin-top: 30px;
+  opacity: 0.7;
+}
+
+
+/* ---------- 11. Адаптив (телефони й планшети) ---------- */
+@media (max-width: 860px) {
+  .hero-grid,
+  .about,
+  .tree {
+    grid-template-columns: 1fr;
+  }
+  .hero-art {
+    order: -1;
+    max-width: 220px;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cats {
+    grid-template-columns: 1fr;
+  }
+  .moon {
+    display: none;
+  }
+  .tree svg {
+    width: 80px;
+  }
+  .band svg {
+    width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

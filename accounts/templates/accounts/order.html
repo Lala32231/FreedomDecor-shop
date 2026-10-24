@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+
+    <header class="navbar">
+      <a href="{% url 'home' %}" class="logo">
+        <span class="year">1950</span>
+        <span class="name">SweetS</span>
+        <span class="city">PARIS</span>
+      </a>
+      <nav class="nav-links">
+        <a href="{% url 'home' %}">Головна</a>
+        <a href="{% url 'order' %}">Замовити</a>
+        <a href="{% url 'cart' %}">Корзина</a>
+        <a href="{% url 'logout' %}">Вийти з акаунта</a>
+      </nav>
+    </header>
+
+    <div class="menu-page">
+      <h1 class="menu-title">Популярні страви</h1>
+
+      {% for category, products in categories.items %}
+      <section class="menu-category">
+        <h2 class="category-title">{{ category }}</h2>
+        <div class="menu-grid">
+
+          {% for product in products %}
+          <div class="menu-card">
+            <div class="menu-card-image">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="menu-card-footer">
+              <span class="price">{{ product.price }} ₴</span>
+              <div class="card-actions">
+                <a href="{% url 'add_to_cart' product.id %}" class="cart-btn" title="Додати в кошик">🛒</a>
+                <button class="buy-btn" 
+                  data-name="{{ product.name }}" 
+                  data-price="{{ product.price }}" 
+                  data-image="{{ product.image.url }}">
+                  Купити зараз
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </section>
+      {% empty %}
+      <p>Товарів ще немає</p>
+      {% endfor %}
+
+    </div> <!-- кінець .menu-page -->
+
+    <!-- Модальне вікно -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-card">
+
+        <div class="modal-step" id="step-confirm">
+          <div class="modal-img-wrap">
+            <img id="modal-img" src="" alt="">
+          </div>
+          <h2 class="card-title" id="modal-product-name"></h2>
+          <p class="modal-price" id="modal-price"></p>
+          <div class="quantity-control">
+            <button class="qty-minus">−</button>
+            <span id="modal-qty">1</span>
+            <button class="qty-plus">+</button>
+          </div>
+          <button class="btn pay-btn">Оплатити</button>
+          <button class="btn-outline close-btn">Скасувати</button>
+        </div>  <!-- step-confirm закривається тут -->
+
+        <div class="modal-step" id="step-success" style="display:none">
+          <div class="success-icon">✓</div>
+          <h2 class="card-title">Успішно оплачено!</h2>
+          <p class="modal-text">Дякуємо за замовлення. Ваше замовлення вже готується.</p>
+          <button class="pay-btn close-btn">Закрити</button>
+        </div>
+
+      </div>
+    </div>
+    <script src="{% static 'order.js' %}"></script>
+  </body>
+</html>
