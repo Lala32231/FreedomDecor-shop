@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FreedomDecor — ловці снів, ловці сонця та прикраси</title>
-
-  <!-- Шрифти -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+{# SVG-малюнки: підключаються через <use href="#id"> #}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
 
       <!-- Ловець снів -->
@@ -100,39 +85,3 @@
 
     </defs>
   </svg>
-
-  <!-- ===== Шапка (меню) ===== -->
-  <header class="top">
-    <div class="wrap">
-      <nav>
-        <a class="brand" href="#/">FreedomDecor</a>
-
-        <div class="links">
-          <a href="#/catalog">Каталог</a>
-          <a href="#/c/dream">Ловці снів</a>
-          <a href="#/c/sun">Ловці сонця</a>
-          <a href="#/c/jewelry">Прикраси</a>
-          <a href="#/about">Про нас</a>
-          <a class="cart" id="cart" href="#/catalog">Кошик (0)</a>
-        </div>
-      </nav>
-    </div>
-
-    <!-- Сюди JS вставляє великий блок (hero) тільки на головній -->
-    <div id="hero"></div>
-  </header>
-
-  <!-- ===== Вміст сторінки (його підставляє script.js) ===== -->
-  <main id="app"></main>
-
-  <!-- ===== Підвал ===== -->
-  <footer id="contacts">
-    <h2>Обрали? Напишіть нам в Instagram</h2>
-    <p>Оплату та доставку обговорюємо в особистих повідомленнях. Відповідаємо протягом дня.</p>
-    <a class="btn sun" href="#/contacts">Написати в директ</a>
-    <small>FreedomDecor © 2026. Приклад структури сайту</small>
-  </footer>
-
-  <script src="/static/script.js"></script>
-</body>
-</html>

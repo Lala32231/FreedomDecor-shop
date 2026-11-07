@@ -1,0 +1,28 @@
+{% extends 'freedomdecor/base.html' %}
+
+{% block theme %}theme-jewelry{% endblock %}
+{% block title %}Прикраси — FreedomDecor{% endblock %}
+
+{% block content %}
+<section class="band jewelry">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="{% url 'home' %}">Головна</a> / <a href="{% url 'catalog' %}">Каталог</a> /
+      {% if only_tree %}<a href="{% url 'jewelry' %}">Прикраси</a> / Дерево життя{% else %}Прикраси{% endif %}
+    </div>
+    <h1>{% if only_tree %}Дерево життя{% else %}Прикраси{% endif %}</h1>
+    <p>{% if only_tree %}Прикраси: маленькі речі з характером{% else %}Кулони, сережки та браслети ручної роботи на кожен день.{% endif %}</p>
+    <svg viewBox="0 0 300 480" aria-hidden="true"><use href="#jewel"/></svg>
+  </div>
+</section>
+
+<section style="padding-top:34px">
+  <div class="wrap">
+    <div class="chips">
+      <a class="chip{% if not only_tree %} on{% endif %}" href="{% url 'jewelry' %}">Усі</a>
+      <a class="chip{% if only_tree %} on{% endif %}" href="{% url 'jewelry_tree' %}">Дерево життя</a>
+    </div>
+    {% include 'freedomdecor/_grid.html' %}
+  </div>
+</section>
+{% endblock %}

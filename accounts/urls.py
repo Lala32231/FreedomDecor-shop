@@ -1,15 +1,19 @@
 from django.urls import path
+
 from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('register/', views.register, name='register'),
-    path('profile/', views.profile, name='profile'),
-    path('order/', views.order, name='order'),
-    path('cart/', views.cart, name='cart'),
-    path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
-    path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
-    path('checkout/', views.checkout, name='checkout'),
+
+    path('catalog/', views.catalog, name='catalog'),
+    path('catalog/tree/', views.catalog, {'tree': True}, name='catalog_tree'),
+
+    path('c/dream/', views.dream, name='dream'),
+    path('c/dream/tree/', views.dream, {'tree': True}, name='dream_tree'),
+
+    path('c/sun/', views.sun, name='sun'),
+    path('c/sun/tree/', views.sun, {'tree': True}, name='sun_tree'),
+
+    path('c/jewelry/', views.jewelry, name='jewelry'),
+    path('c/jewelry/tree/', views.jewelry, {'tree': True}, name='jewelry_tree'),
 ]

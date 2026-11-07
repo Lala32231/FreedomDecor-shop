@@ -1,0 +1,15 @@
+<article class="card">
+  <div class="pic {{ product.category }}{% if product.image %} photo{% endif %}">
+    {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% else %}
+      <svg viewBox="0 0 300 480"><use href="#{{ product.symbol }}"/></svg>
+    {% endif %}
+  </div>
+  <div class="body">
+    <h3>{{ product.name }}</h3>
+    <small>{{ product.short_description }}</small>
+    <div class="price">{{ product.price }} грн</div>
+    <button class="btn" data-add>У кошик</button>
+  </div>
+</article>

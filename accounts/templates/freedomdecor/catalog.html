@@ -1,0 +1,30 @@
+{% extends 'freedomdecor/base.html' %}
+
+{% block title %}Каталог — FreedomDecor{% endblock %}
+
+{% block content %}
+<section class="band blue">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="{% url 'home' %}">Головна</a> /
+      {% if only_tree %}<a href="{% url 'catalog' %}">Каталог</a> / Дерево життя{% else %}Каталог{% endif %}
+    </div>
+    <h1>{% if only_tree %}Дерево життя{% else %}Каталог{% endif %}</h1>
+    <p>{% if only_tree %}Символ життя в кожній колекції.{% else %}Усі роботи в одному місці.{% endif %}</p>
+    <svg viewBox="0 0 300 480" aria-hidden="true"><use href="#tree"/></svg>
+  </div>
+</section>
+
+<section style="padding-top:34px">
+  <div class="wrap">
+    <div class="chips">
+      <a class="chip{% if not only_tree %} on{% endif %}" href="{% url 'catalog' %}">Усі</a>
+      <a class="chip" href="{% url 'dream' %}">Ловці снів</a>
+      <a class="chip" href="{% url 'sun' %}">Ловці сонця</a>
+      <a class="chip" href="{% url 'jewelry' %}">Прикраси</a>
+      <a class="chip{% if only_tree %} on{% endif %}" href="{% url 'catalog_tree' %}">Дерево життя</a>
+    </div>
+    {% include 'freedomdecor/_grid.html' %}
+  </div>
+</section>
+{% endblock %}

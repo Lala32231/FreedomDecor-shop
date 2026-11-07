@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk" class="{% block theme %}{% endblock %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}FreedomDecor — ловці снів, ловці сонця та прикраси{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'freedomdecor/style.css' %}">
+</head>
+<body>
+  {% include 'freedomdecor/_sprite.html' %}
+
+  <header class="top">
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="{% url 'home' %}">FreedomDecor</a>
+        <div class="links">
+          <a href="{% url 'catalog' %}" class="{% if 'catalog' in request.resolver_match.url_name %}on{% endif %}">Каталог</a>
+          <a href="{% url 'dream' %}" class="{% if 'dream' in request.resolver_match.url_name %}on{% endif %}">Ловці снів</a>
+          <a href="{% url 'sun' %}" class="{% if 'sun' in request.resolver_match.url_name %}on{% endif %}">Ловці сонця</a>
+          <a href="{% url 'jewelry' %}" class="{% if 'jewelry' in request.resolver_match.url_name %}on{% endif %}">Прикраси</a>
+          <a href="{% url 'home' %}#about">Про нас</a>
+          <a class="cart" id="cart" href="{% url 'catalog' %}">Кошик (0)</a>
+        </div>
+      </nav>
+    </div>
+
+    {# Великий блок: тільки на головній #}
+    {% block hero %}{% endblock %}
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer id="contacts">
+    <h2>Обрали? Напишіть нам в Instagram</h2>
+    <p>Оплату та доставку обговорюємо в особистих повідомленнях. Відповідаємо протягом дня.</p>
+    {# ЗАМІНІТЬ посилання на директ магазину: https://ig.me/m/НІК #}
+    <a class="btn sun" href="https://instagram.com/">Написати в директ</a>
+    <small>FreedomDecor © 2026</small>
+  </footer>
+
+  <script src="{% static 'freedomdecor/script.js' %}"></script>
+</body>
+</html>

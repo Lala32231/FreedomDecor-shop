@@ -469,6 +469,16 @@ section {
   height: 100%;
 }
 
+/* коли є справжнє фото товару */
+.pic.photo {
+  padding: 0;
+}
+.pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .pic.dream   { background: linear-gradient(180deg, #475368, #1E293B); color: #CFAF83; }
 .pic.sun     { background: linear-gradient(180deg, #FCF2C5, #FCC963); color: #752A0B; }
 .pic.jewelry { background: linear-gradient(180deg, #f1ece3, #cfc4b2); color: #6b5530; }

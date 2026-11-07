@@ -1,0 +1,9 @@
+{% if products %}
+  <div class="grid">
+    {% for product in products %}
+      {% include 'freedomdecor/_card.html' %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="sub">Поки що тут порожньо. Товари додаються через адмінку.</p>
+{% endif %}

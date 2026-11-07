@@ -1,0 +1,82 @@
+{% extends 'freedomdecor/base.html' %}
+
+{% block hero %}
+<div class="hero">
+  <div class="moon"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Ручна робота, що береже твій сон</h1>
+      <p>Ловці снів, ловці сонця та прикраси з ниток, пір’я й бісеру.
+         Кожна річ плететься вручну, двох однакових не буває.</p>
+      <div class="btns">
+        <a class="btn sun" href="{% url 'catalog' %}">Дивитися каталог</a>
+        <a class="btn ghost" href="#contacts">Написати в Instagram</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 300 480" role="img" aria-label="Ловець снів"><use href="#dream"/></svg>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 56V28C150 0 300 0 450 20s300 38 450 16 210-28 300-6V56z" fill="currentColor"/>
+  </svg>
+</div>
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="wrap">
+    <h2 class="t">Три колекції</h2>
+    <p class="sub">Ніч, день і щось нейтральне, що пасує до будь-якого настрою.</p>
+    <div class="cats">
+      <a class="cat dream" href="{% url 'dream' %}">
+        <svg viewBox="0 0 300 480" aria-hidden="true"><use href="#dream"/></svg>
+        <h3>Ловці снів</h3><p>Щоб снилося добре</p>
+      </a>
+      <a class="cat sun-c" href="{% url 'sun' %}">
+        <svg viewBox="0 0 300 480" aria-hidden="true"><use href="#sun"/></svg>
+        <h3>Ловці сонця</h3><p>Щоб у кімнаті було тепло</p>
+      </a>
+      <a class="cat jewelry" href="{% url 'jewelry' %}">
+        <svg viewBox="0 0 300 480" aria-hidden="true"><use href="#jewel"/></svg>
+        <h3>Прикраси</h3><p>Маленькі речі з характером</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="tree">
+      <svg viewBox="0 0 300 300" aria-hidden="true"><use href="#tree" y="-10"/></svg>
+      <div>
+        <h2 class="t" style="font-size:2.2rem">Дерево життя</h2>
+        <p>Символ, що поєднує небо й землю. Є в кожній колекції, обирайте свою.</p>
+        <div class="chips" style="margin:0">
+          <a class="chip" href="{% url 'dream_tree' %}">Ловці снів</a>
+          <a class="chip" href="{% url 'sun_tree' %}">Ловці сонця</a>
+          <a class="chip" href="{% url 'jewelry_tree' %}">Прикраси</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <h2 class="t">Новинки</h2>
+    <p class="sub">Тут показані товари з галочкою «Новинка» в адмінці.</p>
+    {% include 'freedomdecor/_grid.html' with products=new_products %}
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="art"><svg viewBox="0 0 300 480" aria-hidden="true"><use href="#dream"/></svg></div>
+    <div>
+      <h2 class="t">Як це робиться</h2>
+      <p>Усе починається з обруча й ниток. Плетіння павутинки займає від двох годин
+         до цілого вечора, потім додаються пір’я, намистини та підвіски.</p>
+      <p>Тут буде коротка історія майстрині: чому вона почала й що для неї означає кожна робота.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
